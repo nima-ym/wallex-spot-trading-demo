@@ -1,0 +1,27 @@
+.topbaranimation{
+    animation: 1s linear 0s infinite normal none running topbarAnimation;
+}
+
+@keyframes topbarAnimation {
+    0% {
+        opacity: 0.3;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    30% {
+        opacity: 0.9;
+    }
+    50% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 0.9;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 0.3;
+    }
+}
