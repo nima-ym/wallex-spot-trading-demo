@@ -1,6 +1,6 @@
 import Image from "next/image"
 import btc from "@/public/BTC.svg"
-import "./style.css"
+import "@/app/globals.css"
 
 export default function TopBar(){
     return(
