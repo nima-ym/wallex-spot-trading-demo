@@ -1,20 +1,20 @@
 "use client";
 
-import React, { useEffect, useRef, memo } from 'react';
+import React, { useEffect, useRef, memo } from "react";
 
 function TradingViewWidget() {
   const container = useRef<HTMLDivElement | null>(null);
 
-  useEffect(
-    () => {
-      const currentContainer = container.current;
-      if (!currentContainer) return;
+  useEffect(() => {
+    const currentContainer = container.current;
+    if (!currentContainer) return;
 
-      const script = document.createElement("script");
-      script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
-      script.type = "text/javascript";
-      script.async = true;
-      script.innerHTML = `
+    const script = document.createElement("script");
+    script.src =
+      "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+    script.type = "text/javascript";
+    script.async = true;
+    script.innerHTML = `
         {
           "allow_symbol_change": true,
           "calendar": false,
@@ -39,21 +39,35 @@ function TradingViewWidget() {
           "studies": [],
           "autosize": true
         }`;
-      currentContainer.appendChild(script);
+    currentContainer.appendChild(script);
 
-      return () => {
-        if (currentContainer.contains(script)) {
-          currentContainer.removeChild(script);
-        }
-      };
-    },
-    []
-  );
+    return () => {
+      if (currentContainer.contains(script)) {
+        currentContainer.removeChild(script);
+      }
+    };
+  }, []);
 
   return (
-    <div className="tradingview-widget-container" ref={container} style={{ height: "100%", width: "100%" }}>
-      <div className="tradingview-widget-container__widget" style={{ height: "calc(100% - 32px)", width: "100%" }}></div>
-      <div className="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/BTCUSD/?exchange=BINANCE" rel="noopener nofollow" target="_blank"><span className="blue-text">Bitcoin price</span></a><span className="trademark"> by TradingView</span></div>
+    <div
+      className="tradingview-widget-container"
+      ref={container}
+      style={{ height: "100%", width: "100%" }}
+    >
+      <div
+        className="tradingview-widget-container__widget"
+        style={{ height: "calc(100% - 32px)", width: "100%" }}
+      ></div>
+      <div className="tradingview-widget-copyright">
+        <a
+          href="https://www.tradingview.com/symbols/BTCUSD/?exchange=BINANCE"
+          rel="noopener nofollow"
+          target="_blank"
+        >
+          <span className="blue-text">Bitcoin price</span>
+        </a>
+        <span className="trademark"> by TradingView</span>
+      </div>
     </div>
   );
 }
