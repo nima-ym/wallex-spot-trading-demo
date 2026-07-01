@@ -97,14 +97,18 @@ const sales = [
   },
 ];
 
-export default function MarketSearch() {
+interface marketSearchProps{
+  darkMode:string
+}
+
+export default function MarketSearch({darkMode}:marketSearchProps) {
   return (
     <div className=" rightSide ">
       <div className=" w-full flex justify-center border-b-[3px] border-b-[#3395ff] ">
         <p className=" text-[#3395ff] py-2.5 ">Spot</p>
       </div>
       <div className=" my-2.5 ">
-        <InputGroup  className=" bg-[#1d2430] ">
+        <InputGroup  className={darkMode == "dark" ? " bg-[#1d2430] " : " bg-[#f5f6f7] " }>
           <InputGroupInput placeholder="Market search..." />
           <InputGroupAddon>
             <Search />
@@ -114,14 +118,14 @@ export default function MarketSearch() {
       <div className=" my-2.5 ">
         <Table>
           <TableHeader>
-            <TableRow className=" border-none ">
-              <TableHead className=" text-[12px] text-[#ffffff99] ">
+            <TableRow className={darkMode == "dark" ? " border-none bg-[#11161D] " : " border-none bg-white "}>
+              <TableHead className={darkMode == "dark" ? " text-[12px] text-[#ffffff99] " : " text-[12px] text-[#00000099] "}>
                 24h change
               </TableHead>
-              <TableHead className=" text-[12px] text-[#ffffff99] text-right ">
+              <TableHead className={darkMode == "dark" ? " text-[12px] text-[#ffffff99] text-right " : " text-[12px] text-[#00000099] text-right "}>
                 Unit price
               </TableHead>
-              <TableHead className=" text-[12px] text-[#ffffff99] text-right ">
+              <TableHead className={darkMode == "dark" ? " text-[12px] text-[#ffffff99] text-right " : " text-[12px] text-[#00000099] text-right "}>
                 Market
               </TableHead>
             </TableRow>
@@ -132,10 +136,10 @@ export default function MarketSearch() {
                 key={sale.totalPrice}
                 className="border-none"
               >
-                <TableCell className="font-medium text-white text-[12px] ">
+                <TableCell className={darkMode == "dark" ? "font-medium text-white text-[12px] " : "font-medium text-black text-[12px] "}>
                   {sale.totalPrice}
                 </TableCell>
-                <TableCell className=" text-right text-white text-[12px] ">
+                <TableCell className={darkMode == "dark" ? " text-right text-white text-[12px] " : " text-right text-black text-[12px] "}>
                   {sale.amount}
                 </TableCell>
                 <TableCell className=" text-right text-[#f65555] text-[12px] ">

@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Separator } from "@/components/ui/separator"
+import { Separator } from "@/components/ui/separator";
 
 const sales = [
   {
@@ -91,27 +91,24 @@ const sales = [
   },
 ];
 
-export default function LeftSide() {
+interface leftSideProps {
+  darkMode: string;
+}
+
+export default function LeftSide({ darkMode }: leftSideProps) {
   return (
     <div>
       <div className=" head mb-2.5 ">
         <div className=" flex justify-between ">
           <div className=" left flex w-fit gap-2.5 items-center ">
-            <div className=" px-2.5 flex bg-[#3f2328] rounded-[5px] gap-0.5 items-center ">
+            <div
+              className={
+                darkMode == "dark"
+                  ? "px-2.5 flex bg-[#3f2328] rounded-[5px] gap-0.5 items-center "
+                  : "px-2.5 flex bg-[#FEEEEE] rounded-[5px] gap-0.5 items-center "
+              }
+            >
               <p className=" text-[#f65555] text-[12px] ">Sale</p>
-              {/* <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                focusable="false"
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="#00B88A"
-                  d="M22.423 6.708a1 1 0 0 0-.923-.618h-4.909a1 1 0 1 0 0 2h2.494l-5.358 5.356-3.383-3.384c-.375-.375-1.038-.375-1.414 0l-6.138 6.14a1 1 0 0 0 1.415 1.415l5.43-5.433 3.382 3.383a1 1 0 0 0 1.415 0L20.5 9.503V12a1 1 0 1 0 2 0V7.09c0-.13-.027-.26-.077-.382"
-                ></path>
-              </svg> */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -130,7 +127,13 @@ export default function LeftSide() {
           </div>
           <div className=" right flex w-fit gap-2.5 items-center ">
             <p className=" text-[#00B88A] text-[12px] ">65%</p>
-            <div className=" px-2.5 flex bg-[#0e3633] rounded-[5px] gap-0.5 items-center ">
+            <div
+              className={
+                darkMode == "dark"
+                  ? "px-2.5 flex bg-[#0e3633] rounded-[5px] gap-0.5 items-center"
+                  : "px-2.5 flex bg-[#E5F8F3] rounded-[5px] gap-0.5 items-center"
+              }
+            >
               <p className=" text-[#00B88A] text-[12px] ">shopping</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -150,23 +153,53 @@ export default function LeftSide() {
         </div>
         <div className=" bar mt-1.5 ">
           <div className=" flex w-full h-1.5 gap-0.5 ">
-            <div className=" w-[35%] h-full bggradient02 rounded-l-2xl "></div>
-            <div className=" w-[65%] h-full bggradient01 rounded-r-2xl "></div>
+            <div
+              className={
+                darkMode == "dark"
+                  ? "w-[35%] h-full bggradient02 rounded-l-2xl"
+                  : "w-[35%] h-full bggradient02darkmode rounded-l-2xl"
+              }
+            ></div>
+            <div
+              className={
+                darkMode == "dark"
+                  ? "w-[65%] h-full bggradient01 rounded-r-2xl"
+                  : "w-[65%] h-full bggradient01darkmode rounded-r-2xl"
+              }
+            ></div>
           </div>
         </div>
       </div>
-      <Separator/>
+      <Separator />
       <div className=" table01 my-2.5 ">
         <Table>
           <TableHeader>
-            <TableRow className=" border-none ">
-              <TableHead className=" text-[12px] text-[#ffffff99] ">
+            <TableRow className={darkMode == "dark" ? "border-none bg-[#11161D]" : "border-none bg-white"}>
+              <TableHead
+                className={
+                  darkMode == "dark"
+                    ? "text-[12px] text-[#ffffff99]"
+                    : "text-[12px] text-[#00000099]"
+                }
+              >
                 Total price (TMN)
               </TableHead>
-              <TableHead className=" text-[12px] text-[#ffffff99] text-right ">
+              <TableHead
+                className={
+                  darkMode == "dark"
+                    ? "text-[12px] text-[#ffffff99] text-right"
+                    : "text-[12px] text-[#00000099] text-right"
+                }
+              >
                 Amount (BTC)
               </TableHead>
-              <TableHead className=" text-[12px] text-[#ffffff99] text-right ">
+              <TableHead
+                className={
+                  darkMode == "dark"
+                    ? "text-[12px] text-[#ffffff99] text-right"
+                    : "text-[12px] text-[#00000099] text-right"
+                }
+              >
                 Price (TMN)
               </TableHead>
             </TableRow>
@@ -175,13 +208,33 @@ export default function LeftSide() {
             {sales.map((sale) => (
               <TableRow
                 key={sale.totalPrice}
-                className="border-none bggradient03"
-                style={{ backgroundSize: `${sale.bg} 100%` , backgroundPosition: "100% 0" , backgroundRepeat:"no-repeat" }}
+                className={
+                  darkMode == "dark"
+                    ? "border-none bggradient03"
+                    : "border-none bggradient03darkmode"
+                }
+                style={{
+                  backgroundSize: `${sale.bg} 100%`,
+                  backgroundPosition: "100% 0",
+                  backgroundRepeat: "no-repeat",
+                }}
               >
-                <TableCell className="font-medium text-white text-[12px] ">
+                <TableCell
+                  className={
+                    darkMode == "dark"
+                      ? "font-medium text-white text-[12px]"
+                      : "font-medium text-black text-[12px]"
+                  }
+                >
                   {sale.totalPrice}
                 </TableCell>
-                <TableCell className=" text-right text-white text-[12px] ">
+                <TableCell
+                  className={
+                    darkMode == "dark"
+                      ? "text-right text-white text-[12px]"
+                      : "text-right text-black text-[12px]"
+                  }
+                >
                   {sale.amount}
                 </TableCell>
                 <TableCell className=" text-right text-[#f65555] text-[12px] ">
@@ -192,25 +245,53 @@ export default function LeftSide() {
           </TableBody>
         </Table>
       </div>
-      <Separator/>
+      <Separator />
       <div className=" flex justify-between items-center my-3 ">
-        <p className=" text-[0.75rem] text-[#ffffff99] ">62,989.69 USDT ≈</p>
+        <p
+          className={
+            darkMode == "dark"
+              ? "text-[0.75rem] text-[#ffffff99]"
+              : "text-[0.75rem] text-black"
+          }
+        >
+          62,989.69 USDT ≈
+        </p>
         <p className=" text-[#00b88a] text-[16px] ">11,368,632,065</p>
       </div>
-      <Separator/>
+      <Separator />
       <div className=" table02 my-2.5 ">
         <Table>
           <TableBody>
             {sales.map((sale) => (
               <TableRow
                 key={sale.totalPrice}
-                className="border-none bggradient04"
-                style={{ backgroundSize: `${sale.bg} 100%` , backgroundPosition: "100% 0" , backgroundRepeat:"no-repeat" }}
+                className={
+                  darkMode == "dark"
+                    ? "border-none bggradient04"
+                    : "border-none bggradient04darkmode"
+                }
+                style={{
+                  backgroundSize: `${sale.bg} 100%`,
+                  backgroundPosition: "100% 0",
+                  backgroundRepeat: "no-repeat",
+                }}
               >
-                <TableCell className="font-medium text-white text-[12px] ">
+                <TableCell
+                  className={
+                    darkMode == "dark"
+                      ? "font-medium text-white text-[12px]"
+                      : "font-medium text-black text-[12px]"
+                  }
+                >
                   {sale.totalPrice}
                 </TableCell>
-                <TableCell className=" text-right text-white text-[12px] ">
+                <TableCell
+                  className={
+                    darkMode == "dark"
+                      ? "text-right text-white text-[12px]"
+                      : "text-right text-black text-[12px]"
+                  }
+                >
                   {sale.amount}
                 </TableCell>
                 <TableCell className=" text-right text-[#00b88a] text-[12px] ">

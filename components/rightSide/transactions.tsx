@@ -88,23 +88,27 @@ const sales = [
   },
 ];
 
-export default function Transactions() {
+interface transactionsProps{
+  darkMode:string
+}
+
+export default function Transactions({darkMode}:transactionsProps) {
   return (
     <div className=" Transactions ">
       <div className=" w-full ">
-        <h6 className=" text-white font-bold p-2.5 "> List of transactions </h6>
+        <h6 className={darkMode == "dark" ? " text-white font-bold p-2.5 " : " text-[#252525] font-bold p-2.5 "}> List of transactions </h6>
       </div>
       <div>
         <Table>
           <TableHeader>
-            <TableRow className=" border-none ">
-              <TableHead className=" text-[12px] text-[#ffffff99] ">
+            <TableRow className={darkMode == "dark" ? " border-none bg-[#11161D] " : " border-none bg-white "}>
+              <TableHead className={darkMode == "dark" ? " text-[12px] text-[#ffffff99] " : " text-[12px] text-[#00000099] "}>
                 Time
               </TableHead>
-              <TableHead className=" text-[12px] text-[#ffffff99] text-right ">
+              <TableHead className={darkMode == "dark" ? " text-[12px] text-[#ffffff99] text-right " : " text-[12px] text-[#00000099] text-right "}>
                 BTC amount
               </TableHead>
-              <TableHead className=" text-[12px] text-[#ffffff99] text-right ">
+              <TableHead className={darkMode == "dark" ? " text-[12px] text-[#ffffff99] text-right " : " text-[12px] text-[#00000099] text-right "}>
                 TMN price
               </TableHead>
             </TableRow>
@@ -115,10 +119,10 @@ export default function Transactions() {
                 key={sale.totalPrice}
                 className="border-none"
               >
-                <TableCell className="font-medium text-white text-[12px] ">
+                <TableCell className={darkMode == "dark" ? "font-medium text-white text-[12px] " : "font-medium text-black text-[12px] "}>
                   {sale.totalPrice}
                 </TableCell>
-                <TableCell className=" text-right text-white text-[12px] ">
+                <TableCell className={darkMode == "dark" ? " text-right text-white text-[12px] " : " text-right text-black text-[12px] "}>
                   {sale.amount}
                 </TableCell>
                 <TableCell className=" text-right text-[#f65555] text-[12px] ">

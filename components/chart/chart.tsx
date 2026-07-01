@@ -2,7 +2,11 @@
 
 import React, { useEffect, useRef, memo } from "react";
 
-function TradingViewWidget() {
+interface chartProps{
+  darkMode:string
+}
+
+function TradingViewWidget({darkMode}:chartProps) {
   const container = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {

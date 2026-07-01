@@ -164,16 +164,49 @@
     rgb(14, 54, 51) 100%
   );
 }
+
+.bggradient01darkmode {
+  background: linear-gradient(
+    90deg,
+    rgb(0, 184, 138) 20%,
+    rgb(229, 248, 243) 100%
+  );
+}
+
+.bggradient02darkmode {
+  background: linear-gradient(
+    90deg,
+    rgb(254, 238, 238) 0%,
+    rgb(246, 85, 85) 80%
+  );
+}
+
 .bggradient02 {
   background: linear-gradient(90deg, rgb(63, 35, 40) 0%, rgb(246, 85, 85) 80%);
 }
 
-.bggradient03{
-  background:linear-gradient(rgb(63, 35, 40), rgb(63, 35, 40))
+.bggradient03 {
+  background: linear-gradient(rgb(63, 35, 40), rgb(63, 35, 40));
 }
 
-.bggradient04{
-  background:linear-gradient(rgb(15, 38, 40), rgb(15, 38, 40))
+.bggradient03darkmode {
+  background: linear-gradient(rgb(254, 238, 238), rgb(254, 238, 238));
+}
+
+.bggradient04 {
+  background: linear-gradient(rgb(15, 38, 40), rgb(15, 38, 40));
+}
+
+.bggradient04darkmode {
+  background: linear-gradient(rgb(242, 251, 249), rgb(242, 251, 249));
+}
+
+.bggradient05 {
+  background: linear-gradient(rgb(17, 22, 29) 0%, rgb(0, 0, 0) 100%);
+}
+
+.bggradient06 {
+  background: linear-gradient(#f1f1f1, #cecece);
 }
 
 .custom-scrollbar {
